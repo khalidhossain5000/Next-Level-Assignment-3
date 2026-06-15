@@ -1,7 +1,7 @@
 
 
 
-SELECT match_id,fixture,base_ticket_price FROM matches WHERE tournament_category='Champions League' AND match_status='Available';
+SELECT match_id,fixture,ROUND(base_ticket_price) FROM matches WHERE tournament_category='Champions League' AND match_status='Available';
 
 
 
@@ -16,7 +16,7 @@ FROM bookings WHERE payment_status is null
 
 
 
-SELECT booking_id,full_name,fixture,total_cost FROM bookings as b
+SELECT booking_id,full_name,fixture,ROUND(total_cost) FROM bookings as b
 INNER JOIN users on b.user_id=users.user_id
 INNER JOIN matches on b.match_id=matches.match_id
 
@@ -34,7 +34,7 @@ ON users.user_id=b.user_id
 
   
 
-SELECT booking_id,match_id,total_cost FROM bookings 
+SELECT booking_id,match_id,ROUND(total_cost) FROM bookings 
 WHERE total_cost> (
   SELECT AVG(total_cost) FROM bookings
 )
