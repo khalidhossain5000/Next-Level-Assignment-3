@@ -43,4 +43,19 @@ WHERE total_cost> (
 
   
 
-SELECT match_id,fixture,base_ticket_price FROM matches ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1
+SELECT match_id,fixture,ROUND(base_ticket_price) FROM matches ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
