@@ -1,11 +1,11 @@
 
 
 
-SELECT * FROM matches WHERE tournament_category='Champions League' AND match_status='Available';
+SELECT match_id,fixture,base_ticket_price FROM matches WHERE tournament_category='Champions League' AND match_status='Available';
 
 
 
-SELECT * FROM users WHERE full_name LIKE 'Tanvir%' OR full_name ILIKE '%Haque%'
+SELECT user_id,full_name,email FROM users WHERE full_name LIKE 'Tanvir%' OR full_name ILIKE '%Haque%'
 
 
 
@@ -25,7 +25,7 @@ INNER JOIN matches on b.match_id=matches.match_id
 
   
 
-SELECT users.user_id,full_name,email,booking_id FROM users LEFT JOIN bookings as b 
+SELECT users.user_id,full_name,booking_id FROM users LEFT JOIN bookings as b 
 ON users.user_id=b.user_id
 
 
@@ -34,7 +34,7 @@ ON users.user_id=b.user_id
 
   
 
-SELECT * FROM bookings 
+SELECT booking_id,match_id,total_cost FROM bookings 
 WHERE total_cost> (
   SELECT AVG(total_cost) FROM bookings
 )
@@ -43,4 +43,4 @@ WHERE total_cost> (
 
   
 
-SELECT * FROM matches ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1
+SELECT match_id,fixture,base_ticket_price FROM matches ORDER BY base_ticket_price DESC LIMIT 2 OFFSET 1
